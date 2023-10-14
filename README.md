@@ -1,3 +1,11 @@
+Tera 3 paginas
+
+1 pagina escolher a primeira letra da cidade.
+
+2 escolher a cidade.
+
+3 puxar a temperatura da cidade
+
 ```bash
 # create a new project in the current directory
 npm create svelte@latest
