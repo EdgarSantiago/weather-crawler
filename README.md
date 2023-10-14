@@ -1,3 +1,5 @@
+Only for studies
+
 ```bash
 # create a new project in the current directory
 npm create svelte@latest
