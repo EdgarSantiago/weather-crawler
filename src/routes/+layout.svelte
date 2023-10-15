@@ -3,9 +3,9 @@
   import "./styles.css";
 </script>
 
-<div class="app">
+<div class="app bg-slate-950 text-gray-50">
   <!--<Header />-->
-  <main class="max-w-4xl bg-blue-400 mx-auto p-5">
+  <main class="max-w-6xl mx-auto p-5">
     <slot />
   </main>
 </div>
