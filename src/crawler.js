@@ -20,27 +20,25 @@ const main = async () => {
     `section[data-label="${letter}"][id="index-${letter}"]`
   );
 
-  // Use Promise.all to extract both text content and href attributes
-  const [textLinks, links2] = await Promise.all([
-    page.evaluate((letter) => {
-      const section = document.querySelector(
-        `section[data-label="${letter}"][id="index-${letter}"]`
-      );
-      const span = section.querySelector("header span");
-      return span.textContent;
-    }, letter),
+  const { textLinks, links, data } = await page.evaluate((letter) => {
+    const section = document.querySelector(
+      `section[data-label="${letter}"][id="index-${letter}"]`
+    );
+    const aElements = section.querySelectorAll("a");
 
-    page.evaluate((letter) => {
-      const section = document.querySelector(
-        `section[data-label="${letter}"][id="index-${letter}"]`
-      );
-      const aElements = section.querySelectorAll("a");
-      return Array.from(aElements, (a) => a.href);
-    }, letter),
-  ]);
+    const data = Array.from(aElements, (a) => ({
+      textContent: a.textContent,
+      href: a.href,
+    }));
 
-  console.log("Text Content:", textLinks);
-  console.log("Links:", links2);
+    return {
+      textLinks: data.map((item) => item.textContent),
+      links: data.map((item) => item.href),
+      data: data,
+    };
+  }, letter);
+
+  console.log("data:", data);
 
   // Close the browser when you're done
   await browser.close();
