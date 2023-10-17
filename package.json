@@ -1,8 +1,10 @@
 {
   "name": "weather-crawler",
   "version": "0.0.1",
+  "author": "EdgarSantiago",
   "scripts": {
-    "cra": "cd src && node crawler.js",
+    "cral": "cd src && node crawler-letter.js",
+    "crah": "cd src && node crawler-href.js",
     "server": "cd src && node server.js",
     "dev": "vite dev",
     "build": "vite build",
