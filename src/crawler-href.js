@@ -41,13 +41,48 @@ const main = async () => {
     );
     console.log("Temperature min:", temperatureMinTextContent);
 
-    // Extract the textContent for minimum temperature
-    const temperatureMin = await page.$(".forecast-today__temperature--min");
-    const temperatureMinTextContent = await page.evaluate(
-      (div) => div.textContent,
-      temperatureMin
+    // Extract the textContent for probabily of rain
+    const probOfRain = await page.$(".forecast-today-detail__item-value");
+    const probOfRainTextContent = await page.evaluate(
+      (span) => span.textContent,
+      probOfRain
     );
-    console.log("Temperature min:", temperatureMinTextContent);
+    console.log("Probabily of rain:", probOfRainTextContent);
+
+    // Select all elements with the class "forecast-today-detail__item-value"
+    const probOfRainElements = await page.$$(
+      ".forecast-today-detail__item-value"
+    );
+
+    // Extract the textContent for each element
+    const probOfRainTextContents = await Promise.all(
+      probOfRainElements.map(async (element) => {
+        return await page.evaluate((span) => span.textContent, element);
+      })
+    );
+
+    // Extracted text contents
+
+    // Define the keys for each value
+    const keys = [
+      "Prob. de Chuva",
+      "Nascer do Sol",
+      "Pôr do Sol",
+      "Vento",
+      "Raios UV",
+      "Umidade",
+    ];
+
+    // Create a JSON object
+    const probOfRainJSON = {};
+
+    // Populate the JSON object with keys and values
+    keys.forEach((key, index) => {
+      probOfRainJSON[key] = probOfRainTextContents[index].trim();
+    });
+
+    // Log the JSON object
+    console.log("Probabilities of Rain (JSON):", probOfRainJSON);
 
     // Close the browser when you're done
     await browser.close();
