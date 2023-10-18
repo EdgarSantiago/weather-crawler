@@ -1,4 +1,4 @@
-Tera 3 paginas
+Tera 2 paginas
 
 1 pagina escolher a cidade.
 
