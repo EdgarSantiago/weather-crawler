@@ -1,5 +1,5 @@
 import express from "express";
-import getCities from "./routes/getCities.js";
+import searchCity from "./routes/searchCity.js";
 import getCity from "./routes/getCity.js";
 import bodyParser from "body-parser";
 
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 
 // Rotas do servidor
-app.use("/scrape", getCities);
+app.use("/scrape", searchCity);
 app.use("/scrape", getCity);
 
 app.listen(port, () => {

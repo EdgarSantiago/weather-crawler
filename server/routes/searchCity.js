@@ -5,12 +5,12 @@ import {
   navigateToURL,
 } from "../crawler/browser.js";
 
-const getCities = Router();
+const searchCity = Router();
 
-getCities.get("/cities/:name", async (req, res) => {
-  console.log("cities");
+searchCity.get("/searchcity/:name", async (req, res) => {
+  console.log("searchcity");
   try {
-    const cityName = req.params.name.toLowerCase(); // Convert the input city name to lowercase
+    const cityName = req.params.name.toLowerCase(); // Converte o input para lowercase
     const browser = await launchPuppeteer();
     const page = await setupPage(browser);
 
@@ -46,4 +46,4 @@ getCities.get("/cities/:name", async (req, res) => {
   }
 });
 
-export default getCities;
+export default searchCity;
