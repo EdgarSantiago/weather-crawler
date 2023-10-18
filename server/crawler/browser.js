@@ -4,8 +4,8 @@ import puppeteer from "puppeteer";
 
 const launchPuppeteer = async () => {
   const browser = await puppeteer.launch({
-    timeout: 60000,
-    headless: false, // Launch the browser with a visible GUI.
+    timeout: 100000,
+    headless: "new", // Launch the browser with a visible GUI.
   });
   return browser;
 };

@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "author": "EdgarSantiago",
   "scripts": {
-    "cral": "cd src && node crawler-letter.js",
-    "crah": "cd src && node crawler-href.js",
-    "server": "cd src && node server.js",
+    "cral": "cd server && node crawler-letter.js",
+    "crah": "cd server && node crawler-href.js",
+    "server": "cd server && node server.js",
+    "start": "cd server && node server.js && vite dev",
     "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",

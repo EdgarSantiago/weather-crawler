@@ -3,9 +3,9 @@ import {
   launchPuppeteer,
   setupPage,
   navigateToURL,
-} from "./crawler/browser.js";
+} from "../src/crawler/browser.js";
 
-import extractLinks from "./crawler/extract-links.js";
+import extractLinks from "../src/crawler/extract-links.js";
 
 const main = async () => {
   const letter = "j";
