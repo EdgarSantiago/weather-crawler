@@ -1,39 +1,19 @@
 <script>
   // @ts-nocheck
+
   import { page } from "$app/stores";
-  let temperatureHref =
-    "https://g1.globo.com/previsao-do-tempo/go/abadia-de-goias.ghtml";
-  let places = [
-    "Abadia de Goiás",
-    "Abadia dos Dourados",
-    "Abadia dos Dourados",
-    "Abadiânia",
-    "Abaeté",
-    "Abaetetuba",
-    "Abaiara",
-    "Abaiara",
-    "Abaíra",
-    "Abaré",
-    "Abatiá",
-    "Abatiá",
-    "Abdon Batista",
-    "Abel Figueiredo",
-    "Abel Figueiredo",
-    "Abelardo Luz",
-    "Abre Campo",
-    "Abreu e Lima",
-    "Abreu e Lima",
-    "Abreulândia",
-    "Abreulândia",
-    "Acaiaca",
-    "Açailândia",
-    "Açailândia",
-    "Acajutiba",
-    "Acará",
-    "Acarape",
-    "Acaraú",
-    "Acari",
-  ];
+  export let cities;
+  cities ? console.log(cities) : console.log("not yet");
+  let loading = true;
+  let error = null;
+
+  // Add an onload handler to detect when the data is loaded
+  $: {
+    if (cities) {
+      loading = false;
+      console.log(cities); // Log the data when it's available
+    }
+  }
 </script>
 
 <div class="typewriter">
@@ -42,13 +22,21 @@
 <p class="text-xl lg:text-3xl">
   Cidades com a letra <span class="text-purple-600">{$page.params.letter}</span>
 </p>
-<ul class="grid grid-cols-2 lg:grid-cols-4 gap-y-10 justify-center">
-  {#each places as place (place)}
-    <li>
-      <a
-        class="text-xl lg:text-3xl hover:text-purple-400"
-        href={`/temperature/${place}?href=${temperatureHref}`}>{place}</a
-      >
-    </li>
-  {/each}
-</ul>
+
+<!-- Display loading or error message while data is being fetched -->
+{#if loading}
+  <div class="text-xl lg:text-3xl">Loading...</div>
+{:else if error}
+  <div class="text-xl lg:text-3xl">Error: {error.message}</div>
+{:else}
+  <h1>carregado</h1>
+  <ul class="grid grid-cols-2 lg:grid-cols-4 gap-y-10 justify-center">
+    {#each cities as cityGroup, i}
+      {#each cityGroup as city, j}
+        <li>
+          <a href={city.href}>{city.textContent}</a>
+        </li>
+      {/each}
+    {/each}
+  </ul>
+{/if}
