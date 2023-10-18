@@ -8,16 +8,42 @@
 
   let cityname = "";
   let href = "";
+  let responseData = null; // Variable to store API response data
+  let loading = false; // Variable to track loading state
 
-  onMount(() => {
+  async function handleSubmit(href) {
+    loading = true; // Set loading state to true
+    const apiUrl = `http://localhost:5000/scrape/weather`;
+    // Build the URL for the API request, using encodeURIComponent to handle special characters in the city name
+    try {
+      // Send a GET request to the API
+      const response = await fetch(apiUrl, {
+        method: "POST", // Use POST method
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ href: href }), // Send data as JSON
+      });
+      console.log(response);
+      if (response.ok) {
+        // Process the response data
+        responseData = await response.json();
+      } else {
+        console.error("Failed to fetch data from the API");
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    } finally {
+      loading = false; // Set loading state to false when the request is completed
+    }
+  }
+
+  onMount(async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const isBeta = urlParams.get("href");
-
-    console.log("page.params:", $page.params);
-    console.log("page.query:", $page.query);
-    console.log("page.query:", isBeta);
     cityname = $page.params.cityname || "Default City";
     href = isBeta || "Default Href";
+    await handleSubmit(href); // Call the submit function
   });
 </script>
 
