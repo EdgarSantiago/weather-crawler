@@ -12,7 +12,7 @@ Este projeto é um web crawler que realiza buscas no site Globo para obter infor
 
 ```bash
   git clone https://github.com/cscolabear/weather-crawler
-  cd narutofansite
+  cd weather-crawler
   npm install or yarn install
   npm run dev && npm run server
 ```
