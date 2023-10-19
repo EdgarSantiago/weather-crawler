@@ -1,34 +1,27 @@
-Tera 2 paginas
+# Crawler de previsão do tempo
 
-1 pagina escolher a cidade.
+Este projeto é um web crawler que realiza buscas no site Globo para obter informações de temperatura de uma cidade específica. Foi desenvolvido com o propósito de aprimorar minhas habilidades, utilizando a tecnologia Svelte. É importante ressaltar que não tenho qualquer intenção de lucrar com este projeto ou de prejudicar o site da Globo de qualquer forma.
 
-2 pagina puxar a temperatura da cidade
+## Stacks utilizadas
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+**Front-end:** Svelte e Tailwindcss
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+**Back-end:** Nodejs, express e puppeteer
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Como instalar
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+  git clone https://github.com/cscolabear/weather-crawler
+  cd narutofansite
+  npm install or yarn install
+  nmp run dev && npm run server
 ```
 
-## Building
+## Funcionalidades
 
-To create a production version of your app:
+- Busca cidades ✅
+- Puxa a temperatura da cidade ✅
 
-```bash
-npm run build
-```
+## Créditos
 
-You can preview the production build with `npm run preview`.
+- [g1](g1.globo.com.)
