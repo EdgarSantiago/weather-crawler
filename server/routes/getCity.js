@@ -75,8 +75,11 @@ getCity.post("/weather", async (req, res) => {
     // Close the browser when you're done
     await browser.close();
 
-    res.json(probOfRainJSON); // Send the scraped data as a JSON response
-    console.log("success");
+    res.json({
+      data: probOfRainJSON,
+      max: temperatureMaxTextContent,
+      min: temperatureMinTextContent,
+    }); // Send the scraped data as a JSON response
   } catch (error) {
     console.error("An error occurred:", error);
     res
