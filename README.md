@@ -14,7 +14,7 @@ Este projeto é um web crawler que realiza buscas no site Globo para obter infor
   git clone https://github.com/cscolabear/weather-crawler
   cd narutofansite
   npm install or yarn install
-  nmp run dev && npm run server
+  npm run dev && npm run server
 ```
 
 ## Funcionalidades
